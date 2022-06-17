@@ -8,8 +8,8 @@ URL = 'http://192.168.0.24/cam-hi.jpg'
 
 #Nome da pasta criada para armazenar os dados que serão utilizados futuramente para o treinamento da IA
 # 'com_chapeu' é um nome que pode ser trocado de acordo com a necessidade da pessoa
-Dados = 'com_chapeu'
-nome_arquivos = 'C_Chapeu'
+Dados = 'sem_chapeu'
+nome_arquivos = 'S_Chapeu'
 # Lógica para verificar se ja existe algum diretório com o nome
 if not os.path.exists(Dados):
 	print('Pasta Criada: ', Dados)
@@ -38,10 +38,9 @@ while True:
         count = count + 1
 
     # Pressionando a tecla q você encerra o programa por completo
-    if key==ord('q'):
+    if key==ord('q'):   
+        # comando fecha e encerra todas as janelas abertas
+        cv2.destroyAllWindows()
         break
     # comando responsável por exibir as imagens em tempo real
     cv2.imshow('ESP-32 CAM',im)
-
-# comando fecha e encerra todas as janelas abertas
-cv2.destroyAllWindows()
