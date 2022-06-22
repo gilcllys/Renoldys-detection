@@ -2,7 +2,8 @@ import numpy as np
 import cv2
 import tensorflow as tf
 from tensorflow.keras.models import load_model
-
+import numpy as np
+import urllib.request
 
 width = 640
 height = 480
@@ -14,6 +15,7 @@ margem = 0.7
 novo_modelo = load_model('./m_treinado.h5')
 
 def preProcessamento(img):
+    img =cv2.resize(img,(32,32))
     #colocando em escala cinza
     img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
     # equalizando as imagens
@@ -22,15 +24,18 @@ def preProcessamento(img):
     img = img /255
     return img
 
+# url utilizada para fazer a conexão com o módulo ESP-32 conectado na rede wiffi
+URL = 'http://192.168.0.24/cam-hi.jpg'    
+
 while True:
-    success, imagemOriginal  = cap.read()
-    img = np.asanyarray(imagemOriginal)
-    img = cv2.resize(img,(32,32))
-    img = preProcessamento(img)
-    #cv2.imshow('Imagem Processada',img)
-    img = img.reshape(1,32,32,1)
+    # Consumindo e tratando as imagens fornecidas do módulo ESP-32
+    img_resp= urllib.request.urlopen(URL)
+    imgnp=np.array(bytearray(img_resp.read()),dtype=np.uint8)
+    imagemOriginal = cv2.imdecode(imgnp,-1)
+    imagemPrcessada = preProcessamento(imagemOriginal)
+    imagemPrcessada = imagemPrcessada.reshape(1,32,32,1)
     # predições
-    classIndex = novo_modelo.predict(img)
+    classIndex = novo_modelo.predict(imagemPrcessada)
     
     def getCalssName(classNo):
         if   classNo == 0: return 'Sem chapeu'
