@@ -4,7 +4,7 @@ import urllib.request
 import os
 
 # url utilizada para fazer a conexão com o módulo ESP-32 conectado na rede wiffi
-URL = 'http://192.168.0.24/cam-hi.jpg'
+URL = 'http://192.168.239.133/cam-hi.jpg'
 
 #Nome que ficara na janela criada ao executar o algoritmo
 cv2.namedWindow("ESP-32 CAM", cv2.WINDOW_AUTOSIZE)
