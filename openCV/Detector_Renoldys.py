@@ -25,7 +25,9 @@ def preProcessamento(img):
     return img
 
 # url utilizada para fazer a conexão com o módulo ESP-32 conectado na rede wiffi
-URL = 'http://192.168.0.24/cam-hi.jpg'    
+#URL = 'http://192.168.0.24/cam-hi.jpg'
+URL = 'http://192.168.239.203:8080/shot.jpg'
+    
 
 while True:
     # Consumindo e tratando as imagens fornecidas do módulo ESP-32
@@ -38,8 +40,9 @@ while True:
     classIndex = novo_modelo.predict(imagemPrcessada)
     
     def getCalssName(classNo):
-        if   classNo == 0: return 'Sem chapeu'
-        elif classNo == 1: return 'Com chapeu'
+        if   classNo == 0: return 'Laminar'
+        elif classNo == 1: return 'Transição'
+        elif classNo == 2 or classNo == 3: return 'Turbulante'
         
     probabilidade = np.amax(classIndex)
     classIndex = np.argmax(classIndex[0])
