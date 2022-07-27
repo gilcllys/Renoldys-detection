@@ -5,12 +5,12 @@ import os
 
 # url utilizada para fazer a conexão com o módulo ESP-32 conectado na rede wiffi
 #URL = 'http://192.168.239.133/cam-hi.jpg'
-URL = 'http://192.168.239.203:8080/shot.jpg'
+URL = 'http://192.168.140.157:8080/shot.jpg'
 
 #Nome da pasta criada para armazenar os dados que serão utilizados futuramente para o treinamento da IA
 # 'com_chapeu' é um nome que pode ser trocado de acordo com a necessidade da pessoa
 Dados = 'Turbulento'
-nome_arquivos = 'turbulento'
+nome_arquivos = 'Turbulento'
 # Lógica para verificar se ja existe algum diretório com o nome
 if not os.path.exists(Dados):
 	print('Pasta Criada: ', Dados)
