@@ -12,7 +12,7 @@ cap = cv2.VideoCapture(0)
 cap.set(3,width)
 cap.set(4, height)
 margem = 0.7
-novo_modelo = load_model('./m_treinado.h5')
+novo_modelo = load_model('./openCV/m_treinado.h5')
 
 def preProcessamento(img):
     img =cv2.resize(img,(32,32))
