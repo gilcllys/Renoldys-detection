@@ -50,5 +50,3 @@ Para quaisquer dúvidas, entre em contato com: [gilcllyscosta@gmail.com]
 
 ---
 
-Você pode substituir os placeholders pelos links e detalhes relevantes!
-
